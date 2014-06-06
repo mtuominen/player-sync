@@ -1,0 +1,10 @@
+'use strict';
+
+var mflPlayerService = angular.module('mflPlayerService', ['ngResource']);
+
+mflPlayerService.factory('MflPlayer', ['$resource',
+  function($resource){
+    return $resource('http://football.myfantasyleague.com/:year/export?TYPE=players&L=&W=&JSON=0', {}, {
+      query: {method:'GET', params:{year:2014}, isArray:true}
+    });
+  }]);
